@@ -4,5 +4,3 @@
 qrcode
 modelscope
 streamlit==1.25.0
-tempfile
-pathlib
