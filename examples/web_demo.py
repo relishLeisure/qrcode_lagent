@@ -9,6 +9,10 @@ from lagent.agents.react import ReAct
 from lagent.llms import GPTAPI
 from lagent.llms.huggingface import HFTransformerCasualLM
 
+import torch
+from modelscope import snapshot_download, AutoModel, AutoTokenizer
+import os
+model_dir = snapshot_download('Shanghai_AI_Laboratory/internlm-chat-7b', revision='v1.0.3')
 
 class SessionState:
 
@@ -90,8 +94,7 @@ class StreamlitUI:
                 st.session_state['model_map'][option] = GPTAPI(
                     model_type=option)
             else:
-                st.session_state['model_map'][option] = HFTransformerCasualLM(
-                    '/home/wsco/zcg/models/Shanghai_AI_Laboratory/internlm-chat-7b')
+                st.session_state['model_map'][option] = HFTransformerCasualLM(model_dir)
         return st.session_state['model_map'][option]
 
     def initialize_chatbot(self, model, plugin_action):
