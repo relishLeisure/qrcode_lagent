@@ -1,0 +1,8 @@
+-r requirements/optional.txt
+-r requirements/runtime.txt
+
+qrcode
+modelscope
+streamlit==1.25.0
+tempfile
+pathlib
