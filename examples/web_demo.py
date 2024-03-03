@@ -4,6 +4,11 @@ import os
 import streamlit as st
 from streamlit.logger import get_logger
 
+import torch
+from modelscope import snapshot_download, AutoModel, AutoTokenizer
+import os
+model_dir = snapshot_download('Shanghai_AI_Laboratory/internlm-chat-7b', revision='v1.0.3')
+
 from lagent.actions import ActionExecutor, PythonInterpreter, QrcodeGenerate, QrcodeBeautify
 from lagent.agents.react import ReAct
 from lagent.llms import GPTAPI
